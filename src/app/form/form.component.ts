@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
  
 @Component({
@@ -10,8 +11,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./form.component.css']  
 })
 export class FormComponent implements OnInit{
-  
-   
+  post:any;
+  retVal:any;
+
     constructor(private http :HttpClient,  private router : Router){}
 
     ngOnInit()
@@ -21,8 +23,7 @@ export class FormComponent implements OnInit{
 
     addUser(model:NgForm)
     {
-     
-         this.http.post('http://localhost:8080/postdto',model.value).subscribe((data) => {});
-        model.resetForm();
+         this.http.post('http://localhost:8080/postdto',model.value).subscribe((data) => { this.retVal=data});
+         this.router.navigate(['/DettaglioPost/'+this.retVal.id]);
     }
 }
