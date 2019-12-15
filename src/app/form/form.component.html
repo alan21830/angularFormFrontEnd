@@ -1,0 +1,11 @@
+<div class="container text-center"  id="contain">
+    
+    <form #userForm="ngForm" class="form"  (ngSubmit)="addUser(userForm)">
+   <input class="form-control" type="text"   placeholder="username" name="username" ngModel > <br>
+   <input class="form-control" type="text" placeholder="titolo" name="titolo" ngModel><br>
+   <textarea class="form-control" rows="5" placeholder="post" name="post" ngModel></textarea><br>
+
+   <button   class="btn btn-outline-success" type="submit">Registrati</button>
+   </form>
+   </div>
+ 
